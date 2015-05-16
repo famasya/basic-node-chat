@@ -1,0 +1,20 @@
+{
+  "name": "basic-node-chat",
+  "version": "0.0.0",
+  "description": "basic node chat using socket.io",
+  "main": "app.js",
+  "dependencies": {
+    "socket.io": "~1.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "socket.io",
+    "chat"
+  ],
+  "author": "abid famasya",
+  "license": "MIT"
+}

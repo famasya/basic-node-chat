@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+
+	</script>
+</head>
+<body>
+<h1>There are <span id="user">0</span> user(s) online</h1>
+	<input type="text" id="message_input"/>
+	<button onclick="sendMessage()">send</button>
+	<div id="chatlog"></div>
+</body>
+<script>
+	var socketio = io.connect("127.0.0.1:3000");
+	socketio.on("message_to_client", function(data) {
+		document.getElementById("chatlog").innerHTML = ("<hr/>" +
+			data['message'] + document.getElementById("chatlog").innerHTML);
+	});
+	socketio.on("new_user", function(data){
+		document.getElementById("user").innerHTML = data["user"];
+	});
+
+	function sendMessage() {
+		var msg = document.getElementById("message_input").value;
+		socketio.emit("message_to_server", { message : msg});
+	}
+</script>
+</html>
